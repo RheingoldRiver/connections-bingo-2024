@@ -1,0 +1,212 @@
+{
+  "books": [
+    {
+      "url": "https://www.goodreads.com/book/show/57065516-the-perfect-run",
+      "title": "The Perfect Run",
+      "author": "Maxime J. Durand",
+      "hm": false,
+      "squareName": "First in a Series",
+      "category": 3
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/15839976-red-rising",
+      "title": "Red Rising",
+      "author": "Pierce Brown",
+      "hm": false,
+      "squareName": "Alliterative Title",
+      "category": 4
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/57443696-kingdoms-of-death",
+      "title": "Kingdoms of Death",
+      "author": "Christopher Ruocchio",
+      "hm": false,
+      "squareName": "Under the Surface",
+      "category": 2
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/56269205-empire-of-the-vampire",
+      "title": "Empire of the Vampire",
+      "author": "Jay Kristoff",
+      "hm": false,
+      "squareName": "Criminals",
+      "category": 1
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/58984703-wrath-goddess-sing",
+      "title": "Wrath Goddess Sing",
+      "author": "Maya  Deane",
+      "hm": false,
+      "squareName": "Dreams",
+      "category": 0
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/9460487-miss-peregrine-s-home-for-peculiar-children",
+      "title": "Miss Peregrine's Home for Peculiar Children",
+      "author": "Ransom Riggs",
+      "hm": false,
+      "squareName": "Entitled Animals",
+      "category": 3
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/31933095-king-of-assassins",
+      "title": "King of Assassins",
+      "author": "R.J.  Barker",
+      "hm": false,
+      "squareName": "Bards",
+      "category": 2
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/382450.Fevre_Dream",
+      "title": "Fevre Dream",
+      "author": "George R.R. Martin",
+      "hm": false,
+      "squareName": "Prologues and Epilogues",
+      "category": 1
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/17645.The_Penelopiad",
+      "title": "The Penelopiad",
+      "author": "Margaret Atwood",
+      "hm": false,
+      "squareName": "Self Published OR Indie Publisher",
+      "category": 0
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/18923798.Not_Another_Vampire_Book__Not_Another_Vampire__1_",
+      "title": "Not Another Vampire Book",
+      "author": "Cassandra Gannon",
+      "hm": false,
+      "squareName": "Romantasy",
+      "category": 1
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/64414866-an-education-in-malice",
+      "title": "An Education in Malice",
+      "author": "S.T. Gibson",
+      "hm": true,
+      "squareName": "Dark Academia",
+      "category": 1
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/55037555-bear-head",
+      "title": "Bear Head",
+      "author": "Adrian Tchaikovsky",
+      "hm": false,
+      "squareName": "Multi-POV",
+      "category": 4
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/150444415-a-quantum-love-story",
+      "title": "A Quantum Love Story",
+      "author": "Mike Chen",
+      "hm": false,
+      "squareName": "Published in 2024",
+      "category": 3
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/944076.Last_Argument_of_Kings",
+      "title": "Last Argument of Kings",
+      "author": "Joe Abercrombie",
+      "hm": true,
+      "squareName": "Character with a Disability",
+      "category": 2
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/77507.Red_Mars",
+      "title": "Red Mars",
+      "author": "Kim Stanley Robinson",
+      "hm": true,
+      "squareName": "Published in the 1990s",
+      "category": 4
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/179911444-how-to-become-the-dark-lord-and-die-trying",
+      "title": "How to Become the Dark Lord and Die Trying",
+      "author": "Django Wexler",
+      "hm": false,
+      "squareName": "Orcs, Trolls, and Goblins - Oh My!",
+      "category": 3
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/11255836-the-quantum-thief",
+      "title": "The Quantum Thief",
+      "author": "Hannu Rajaniemi",
+      "hm": false,
+      "squareName": "Space Opera",
+      "category": 4
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/59406549-a-tempest-of-tea",
+      "title": "A Tempest of Tea",
+      "author": "Hafsah Faizal",
+      "hm": false,
+      "squareName": "Author of Color",
+      "category": 1
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/18007564-the-martian",
+      "title": "The Martian",
+      "author": "Andy Weir",
+      "hm": true,
+      "squareName": "Survival",
+      "category": 4
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/57596188-the-hand-of-the-sun-king",
+      "title": "The Hand of the Sun King",
+      "author": "J.T. Greathouse",
+      "hm": false,
+      "squareName": "Judge a Book By Its Cover",
+      "category": 2
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/48734122-the-great-witches-baking-show",
+      "title": "The Great Witches Baking Show",
+      "author": "Nancy Warren",
+      "hm": true,
+      "squareName": "Set in a Small Town",
+      "category": 2
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/6622820-the-war-that-killed-achilles",
+      "title": "The War That Killed Achilles",
+      "subtitle": "The True Story of Homer's Iliad and the Trojan War",
+      "author": "Caroline Alexander",
+      "hm": false,
+      "squareName": "Sub: SFF-Related Nonfiction",
+      "category": 0
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/3973.Ilium",
+      "title": "Ilium",
+      "author": "Dan Simmons",
+      "hm": true,
+      "squareName": "Eldritch Creatures",
+      "category": 0
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/13623848-the-song-of-achilles",
+      "title": "The Song of Achilles",
+      "author": "Madeline Miller",
+      "hm": false,
+      "squareName": "Reference Materials",
+      "category": 0
+    },
+    {
+      "url": "https://www.goodreads.com/book/show/62229748-the-seven-deaths-of-evelyn-hardcastle",
+      "title": "The Seven Deaths of Evelyn Hardcastle",
+      "author": "Stuart Turton",
+      "hm": false,
+      "squareName": "Reference Materials",
+      "category": 3
+    }
+  ],
+  "categories": [
+    { "name": "Based on the Iliad", "difficulty": 1, "idx": 0 },
+    { "name": "Contains vampires", "difficulty": 3, "idx": 1 },
+    { "name": "'King' is in the title", "difficulty": 5, "idx": 2 },
+    { "name": "Time loop story", "difficulty": 4, "idx": 3 },
+    { "name": "Set on Mars", "difficulty": 2, "idx": 4 }
+  ]
+}
