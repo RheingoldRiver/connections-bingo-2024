@@ -28,6 +28,10 @@ export const Information = () => {
           When you have guessed everything correctly (or want to give up), you can copy your guesses as a grid of emoji
           to share how well you did.
         </li>
+        <li>
+          Normal Connections does yellow-purple for the categories in increasing "abstractness" (not necessarily
+          perceived difficulty); I've used orange-purple. "Abstractness" may be a bit subjective.
+        </li>
       </ol>
       <p className="font-bold">Rules for categories:</p>
       <ol className="mb-2 list-disc list-inside ml-4">
