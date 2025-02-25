@@ -1,6 +1,6 @@
 import * as Toolbar from "@radix-ui/react-toolbar";
 import clsx from "clsx";
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 export const ToolbarButton = ({
   children,
@@ -18,6 +18,17 @@ export const ToolbarButton = ({
     >
       {children}
     </Toolbar.Button>
+  );
+};
+
+export const ToolbarText = ({ children, ...props }: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div
+      {...props} // ✅ Only applies valid div attributes
+      className={clsx("cursor-pointer p0 px-1 md:px-2 rounded mb-2", "text-xs md:text-lg", props.className)}
+    >
+      {children}
+    </div>
   );
 };
 

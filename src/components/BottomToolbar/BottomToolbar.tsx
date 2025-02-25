@@ -1,15 +1,24 @@
 import { ReactNode, forwardRef, useContext, useState } from "react";
 import * as Toolbar from "@radix-ui/react-toolbar";
 import { GameStateContext } from "../GameStateProvider/GameStateProvider";
-import { ToolbarButton } from "../Button/Button";
+import { ToolbarButton, ToolbarText } from "../Button/Button";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import clsx from "clsx";
-import { CATEGORY_SIZE, DisplayType } from "../GameStateProvider/constants";
+import { CATEGORY_SIZE, DisplayType, MAX_LIVES } from "../GameStateProvider/constants";
 
 const BottomToolbar = forwardRef(() => {
-  const { setDisplayType, doGuess, doClearGuess, doEndGame, currentGuess, gameOver, setScoreOpen } =
-    useContext(GameStateContext);
+  const {
+    setDisplayType,
+    doGuess,
+    doClearGuess,
+    doEndGame,
+    currentGuess,
+    gameOver,
+    setScoreOpen,
+    guessHistory,
+    correct,
+  } = useContext(GameStateContext);
   const [newBoardOpen, setNewBoardOpen] = useState(false);
   return (
     <Toolbar.Root className="pl-2 space-x-3 my-2 w-full flex justify-start z-[100]" aria-label="Game controls">
@@ -91,6 +100,7 @@ const BottomToolbar = forwardRef(() => {
       >
         Submit guess
       </ToolbarButton>
+      <ToolbarText>Lives: {MAX_LIVES - (guessHistory.length - correct.length)}</ToolbarText>
       <ToolbarButton
         onClick={() => {
           if (gameOver) {
