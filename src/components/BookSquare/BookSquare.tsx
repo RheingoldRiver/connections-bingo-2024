@@ -105,7 +105,7 @@ export default function BookSquare({
         )}
 
         {(displayType === DisplayType.Overlay || displayType === DisplayType.Text) && (
-          <div className="relative bg-gray-100 dark:bg-gray-800/60">
+          <div className="relative bg-gray-100/70 dark:bg-gray-800/60">
             <div
               className={clsx(
                 "md:font-bold",
