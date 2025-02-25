@@ -74,13 +74,13 @@ export default function BookSquare({
         isHovered ? "brightness-50" : "hover:brightness-90",
         bg,
         book.eliminated || gameOver ? "cursor-not-allowed" : "cursor-pointer",
-        "w-48 max-w-[19vw]",
+        "w-full",
         "text-xs md:text-sm",
         isDragging ? "opacity-50" : "",
         isHovered ? "border-amber-500" : "",
         "relative",
         book.eliminated ? "invisible -order-1 h-0" : "h-48 max-h-[15vh]",
-        book.eliminated ? "px-1 md:px-2" : "p-1 md:p-2 border m-1"
+        book.eliminated ? "px-1 md:px-2" : "p-1 md:p-2 border my-1"
       )}
       onClick={() => doClick(book)}
       disabled={book.eliminated || gameOver}
