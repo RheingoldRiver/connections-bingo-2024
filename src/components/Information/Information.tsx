@@ -32,7 +32,10 @@ export const Information = () => {
       <p className="font-bold">Rules for categories:</p>
       <ol className="mb-2 list-disc list-inside ml-4">
         <li>Each category should be possible to figure out based on the Goodreads pages for the books.</li>
-        <li>No category has been a Bingo square in the past.</li>
+        <li>
+          No category has been a Bingo square in the past, and also I picked categories that are probably too specific
+          to ever be Bingo squares in the future..
+        </li>
         <li>
           No category is based on my own personal experience; for example "listened to this as an audiobook" or "books I
           enjoyed" will not be categories.
