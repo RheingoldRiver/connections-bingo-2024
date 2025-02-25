@@ -11,7 +11,7 @@ const BottomToolbar = forwardRef(() => {
   const {
     setDisplayType,
     doGuess,
-    doClearGuess,
+    // doClearGuess,
     doEndGame,
     currentGuess,
     gameOver,
