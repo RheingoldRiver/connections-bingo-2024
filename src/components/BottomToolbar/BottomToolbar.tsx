@@ -76,7 +76,7 @@ const BottomToolbar = forwardRef(() => {
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
 
-      <ToolbarButton
+      {/* <ToolbarButton
         onClick={doClearGuess}
         aria-label="Clear guess"
         disabled={currentGuess.length === 0 || gameOver}
@@ -87,7 +87,7 @@ const BottomToolbar = forwardRef(() => {
         )}
       >
         Clear guess
-      </ToolbarButton>
+      </ToolbarButton> */}
       <ToolbarButton
         onClick={doGuess}
         aria-label="Submit guess"
