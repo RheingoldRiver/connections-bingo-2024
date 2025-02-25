@@ -228,7 +228,7 @@
     }
   ],
   "categories": [
-    { "name": "Based on the Iliad", "difficulty": 1, "idx": 0 },
+    { "name": "Based on The Iliad", "difficulty": 1, "idx": 0 },
     { "name": "Contains vampires", "difficulty": 3, "idx": 1 },
     { "name": "\"King\" is in the title", "difficulty": 5, "idx": 2 },
     { "name": "Time loop story", "difficulty": 4, "idx": 3 },
