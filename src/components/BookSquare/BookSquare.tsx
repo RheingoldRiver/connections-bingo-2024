@@ -1,21 +1,9 @@
 import clsx from "clsx";
 import { useDrag, useDrop } from "react-dnd";
 import { useEffect, useRef, useContext, useCallback } from "react";
-import { Book } from "../GameStateProvider/constants";
+import { Book, COLORS, DisplayType } from "../GameStateProvider/constants";
 import { GameStateContext } from "../GameStateProvider/GameStateProvider";
-import { Bars4Icon } from "@heroicons/react/24/outline";
-
-type DifficultyColors = {
-  [key: number]: { bg: string; text?: string };
-};
-
-const colors: DifficultyColors = {
-  1: { bg: "bg-orange-300 dark:bg-orange-800" },
-  2: { bg: "bg-yellow-200 dark:bg-yellow-400", text: "dark:text-black" },
-  3: { bg: "bg-green-300 dark:bg-green-800" },
-  4: { bg: "bg-blue-300 dark:bg-blue-800" },
-  5: { bg: "bg-purple-300 dark:bg-purple-800" },
-};
+import { ArrowTopRightOnSquareIcon, Bars4Icon } from "@heroicons/react/24/outline";
 
 export default function BookSquare({
   book,
@@ -28,11 +16,11 @@ export default function BookSquare({
   isSelected: boolean;
   parentIndex: number;
 }) {
-  const { doSwap } = useContext(GameStateContext);
+  const { doSwap, gameOver, displayType } = useContext(GameStateContext);
 
   let bg = "bg-gray-200 dark:bg-gray-800";
   if (book.eliminated) {
-    bg = colors[book.category.difficulty].bg;
+    bg = COLORS[book.category.difficulty].bg;
   } else if (isSelected) {
     bg = "bg-red-300 dark:bg-red-800";
   }
@@ -82,55 +70,99 @@ export default function BookSquare({
         dropRef(node);
       }}
       className={clsx(
-        "p-1 md:p-2 border rounded-md text-center transition",
+        "rounded-md text-center transition",
         isHovered ? "brightness-50" : "hover:brightness-90",
         bg,
-        book.eliminated ? "cursor-not-allowed" : "cursor-pointer",
-        "w-48 h-48 max-h-[15vh] max-w-[19vw]",
+        book.eliminated || gameOver ? "cursor-not-allowed" : "cursor-pointer",
+        "w-48 max-w-[19vw]",
         "text-xs md:text-sm",
         isDragging ? "opacity-50" : "",
         isHovered ? "border-amber-500" : "",
-        "relative"
+        "relative",
+        book.eliminated ? "invisible -order-1 h-0" : "h-48 max-h-[15vh]",
+        book.eliminated ? "px-1 md:px-2" : "p-1 md:p-2 border m-1"
       )}
       onClick={() => doClick(book)}
-      disabled={book.eliminated}
+      disabled={book.eliminated || gameOver}
     >
       {/* Drag handle */}
+
+      <div
+        className="relative w-full h-full flex justify-center flex-col bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: displayType === DisplayType.Image ? `url(/${book.image})` : "unset",
+        }}
+      >
+        {displayType === DisplayType.Overlay && (
+          <div className="absolute inset-0">
+            <div
+              className="bg-cover bg-center bg-no-repeat opacity-50 w-full h-full"
+              style={{
+                backgroundImage: `url(/${book.image})`,
+              }}
+            />
+          </div>
+        )}
+
+        {(displayType === DisplayType.Overlay || displayType === DisplayType.Text) && (
+          <div className="relative bg-gray-100 dark:bg-gray-800/60">
+            <div
+              className={clsx(
+                "md:font-bold",
+                book.eliminated && COLORS[book.category.difficulty]?.text
+                  ? COLORS[book.category.difficulty].text
+                  : "dark:text-gray-100"
+              )}
+            >
+              {book.title}
+              {book.subtitle && <span className="hidden lg:inline">: {book.subtitle}</span>}
+            </div>
+            <div
+              className={clsx(
+                "text-xs text-gray-600 hidden md:block",
+                book.eliminated && COLORS[book.category.difficulty]?.text
+                  ? COLORS[book.category.difficulty].text
+                  : "dark:text-gray-100"
+              )}
+            >
+              {book.author}
+            </div>
+          </div>
+        )}
+      </div>
       <div
         ref={dragRefCallback}
-        className="cursor-grab active:cursor-grabbing absolute top-1 right-1 md:top-2 md:right-2"
+        className={clsx(
+          "active:cursor-grabbing absolute top-1 left-1 md:top-2 md:left-2",
+          gameOver || book.eliminated ? "cursor-not-allowed" : "cursor-grab"
+        )}
       >
         <Bars4Icon
           className={clsx(
             "h-4 w-4 md:h-5 md:w-5 text-gray-800",
-            book.eliminated && colors[book.category.difficulty]?.text
-              ? colors[book.category.difficulty].text
+            book.eliminated && COLORS[book.category.difficulty]?.text
+              ? COLORS[book.category.difficulty].text
               : "dark:text-gray-100"
           )}
         />
       </div>
-
-      <div
-        className={clsx(
-          "md:font-bold",
-          book.eliminated && colors[book.category.difficulty]?.text
-            ? colors[book.category.difficulty].text
-            : "dark:text-gray-100"
-        )}
+      <a
+        className="absolute top-1 right-1 md:top-2 md:right-2"
+        href={book.url}
+        target="blank"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
-        {book.title}
-        {book.subtitle && <span className="hidden lg:inline">: {book.subtitle}</span>}
-      </div>
-      <div
-        className={clsx(
-          "text-xs text-gray-600 hidden md:block",
-          book.eliminated && colors[book.category.difficulty]?.text
-            ? colors[book.category.difficulty].text
-            : "dark:text-gray-100"
-        )}
-      >
-        {book.author}
-      </div>
+        <ArrowTopRightOnSquareIcon
+          className={clsx(
+            "h-4 w-4 md:h-5 md:w-5 text-gray-800",
+            book.eliminated && COLORS[book.category.difficulty]?.text
+              ? COLORS[book.category.difficulty].text
+              : "dark:text-gray-100"
+          )}
+        />
+      </a>
     </button>
   );
 }

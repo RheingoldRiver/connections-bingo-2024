@@ -9,7 +9,7 @@ export const Information = () => {
     <Modal
       open={infoOpen}
       onOpenChange={setInfoOpen}
-      trigger={<QuestionMarkCircleIcon className="h-10 w-10 text-gray-800 dark:text-gray-300" />}
+      trigger={<QuestionMarkCircleIcon className="h-10 w-10 text-gray-800 dark:text-gray-300 cursor-pointer" />}
     >
       <Dialog.Title className="text-center font-bold text-md mb-2">Rules</Dialog.Title>
       <p className="font-bold">How the game works:</p>

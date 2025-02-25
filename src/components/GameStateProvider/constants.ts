@@ -27,6 +27,7 @@ export interface Book {
   squareName: string;
   category: Category;
   eliminated: boolean;
+  image?: string;
 }
 
 export const initialBoard: Board = data.books.map((book) => {
@@ -41,7 +42,36 @@ export const initialBoard: Board = data.books.map((book) => {
     // do not reorder!
     category: CATEGORIES[book.category],
     eliminated: false,
+    image: book.image,
   };
 });
 
 export type GuessHistory = Category[][];
+
+export enum DisplayType {
+  Text = "Text",
+  Image = "Image",
+  Overlay = "Overlay",
+}
+
+export const EMOJI_MAP = {
+  1: "🟧",
+  2: "🟨",
+  3: "🟩",
+  4: "🟦",
+  5: "🟪",
+};
+
+export const MAX_LIVES = 6;
+
+export type DifficultyColors = {
+  [key: number]: { bg: string; text?: string };
+};
+
+export const COLORS: DifficultyColors = {
+  1: { bg: "bg-orange-300 dark:bg-orange-800" },
+  2: { bg: "bg-yellow-200 dark:bg-yellow-400", text: "dark:text-black" },
+  3: { bg: "bg-green-300 dark:bg-green-800" },
+  4: { bg: "bg-blue-300 dark:bg-blue-800" },
+  5: { bg: "bg-purple-300 dark:bg-purple-800" },
+};

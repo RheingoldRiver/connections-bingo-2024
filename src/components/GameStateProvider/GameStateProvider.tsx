@@ -1,5 +1,5 @@
-import { ReactNode, createContext, useState } from "react";
-import { Board, Book, CATEGORY_SIZE, GuessHistory, initialBoard } from "./constants";
+import { Dispatch, ReactNode, SetStateAction, createContext, useState } from "react";
+import { Board, Book, CATEGORY_SIZE, Category, DisplayType, GuessHistory, initialBoard } from "./constants";
 import { produce } from "immer";
 
 interface GameState {
@@ -12,6 +12,13 @@ interface GameState {
   // needed for drag-and-drop
   doSwap: (dragIndex: number, hoverIndex: number) => void;
   guessHistory: GuessHistory;
+  gameOver: boolean;
+  scoreOpen: boolean;
+  setScoreOpen: Dispatch<SetStateAction<boolean>>;
+  doEndGame: () => void;
+  displayType: DisplayType;
+  setDisplayType: Dispatch<SetStateAction<DisplayType>>;
+  correct: Category[];
 }
 
 const DEFAULT_GAME_STATE: GameState = {
@@ -22,6 +29,13 @@ const DEFAULT_GAME_STATE: GameState = {
   doClearGuess: () => {},
   doSwap: () => {},
   guessHistory: [],
+  gameOver: false,
+  doEndGame: () => {},
+  scoreOpen: false,
+  setScoreOpen: () => {},
+  displayType: DisplayType.Overlay,
+  setDisplayType: () => {},
+  correct: [],
 };
 
 export const GameStateContext = createContext(DEFAULT_GAME_STATE);
@@ -29,6 +43,10 @@ export default function GameStateProvider({ children }: { children: ReactNode })
   const [board, setBoard] = useState<Board>(initialBoard);
   const [currentGuess, setCurrentGuess] = useState<Book[]>([]);
   const [guessHistory, setGuessHistory] = useState<GuessHistory>([]);
+  const [gameOver, setGameOver] = useState<boolean>(false);
+  const [scoreOpen, setScoreOpen] = useState<boolean>(false);
+  const [displayType, setDisplayType] = useState<DisplayType>(DisplayType.Overlay);
+  const [correct, setCorrect] = useState<Category[]>([]);
 
   const doAdd = (book: Book) => {
     if (currentGuess.length >= CATEGORY_SIZE) return;
@@ -66,6 +84,12 @@ export default function GameStateProvider({ children }: { children: ReactNode })
       })
     );
     doClearGuess();
+    const nextCorrect = [...correct, currentGuess[0].category];
+    setCorrect(nextCorrect);
+    if (nextCorrect.length === CATEGORY_SIZE) {
+      setGameOver(true);
+      setScoreOpen(true);
+    }
   };
 
   const doClearGuess = () => {
@@ -80,6 +104,12 @@ export default function GameStateProvider({ children }: { children: ReactNode })
     );
   };
 
+  const doEndGame = () => {
+    if (!confirm("Are you sure?")) return;
+    setGameOver(true);
+    setScoreOpen(true);
+  };
+
   return (
     <GameStateContext.Provider
       value={{
@@ -90,6 +120,13 @@ export default function GameStateProvider({ children }: { children: ReactNode })
         doClearGuess,
         doSwap,
         guessHistory,
+        gameOver,
+        doEndGame,
+        scoreOpen,
+        setScoreOpen,
+        displayType,
+        setDisplayType,
+        correct,
       }}
     >
       {children}
