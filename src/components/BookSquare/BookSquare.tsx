@@ -83,9 +83,10 @@ export default function BookSquare({
         isDragging ? "opacity-50" : "",
         isHovered ? "border-amber-500" : "",
         "relative",
-        "flex flex-col gap-1",
+        "flex",
+        displayType === DisplayType.Text && "flex-col gap-1",
         book.eliminated ? "invisible -order-1 h-0" : "h-48 max-h-[15vh]",
-        book.eliminated ? "px-1 md:px-2" : "p-1 md:p-2 border my-1"
+        book.eliminated ? "px-1 md:px-2" : "p-1 border my-1"
       )}
       onClick={() => doClick(book)}
       disabled={book.eliminated || gameOver}
