@@ -86,7 +86,7 @@ const BottomToolbar = forwardRef(() => {
           "disabled:text-gray-500 disabled:bg-gray-200",
           "dark:disabled:bg-gray-800 dark:disabled:text-gray-400",
           "cursor-pointer disabled:cursor-not-allowed",
-          "dark:hover:bg-gray-800"
+          "dark:hover:bg-gray-800 hover:bg-gray-200"
         )}
       >
         Deselect all
