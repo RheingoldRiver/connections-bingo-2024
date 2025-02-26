@@ -24,7 +24,7 @@ export const ToolbarButton = ({
 export const ToolbarText = ({ children, ...props }: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
-      {...props} // ✅ Only applies valid div attributes
+      {...props}
       className={clsx(
         "p0 px-1 md:px-2 rounded mb-2",
         "text-xs md:text-lg",

@@ -49,7 +49,7 @@ export default function BookSquare({
       doSwap(index, parentIndex);
     },
     collect: (monitor) => ({
-      isHovered: monitor.isOver({ shallow: true }) && monitor.getItem() !== null, // ✅ Fix hover persistence
+      isHovered: monitor.isOver({ shallow: true }) && monitor.getItem() !== null,
     }),
   });
 
