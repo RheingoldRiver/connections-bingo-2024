@@ -32,7 +32,7 @@ export default function Board() {
                 .filter((book) => book.category === cat)
                 .map((book, index, array) => (
                   <>
-                    <a key={book.title} href={book.url} className="underline">
+                    <a key={book.title} href={book.url} className="underline" target="_blank">
                       {book.title}
                     </a>
                     {index < array.length - 1 && ", "}
