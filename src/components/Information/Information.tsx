@@ -26,7 +26,8 @@ export const Information = () => {
         <li>If you "die" your life counter will just go negative.</li>
         <li>
           Yes, I know this is a client-side app and you could look at React dev tools to cheat. It's also OSS and you
-          can look at the source code to cheat. I'd prefer you didn't.
+          can look at the source code to cheat. You can also cheat at NYTConnections using multiple browsers so that's
+          ok :)
         </li>
         <li>
           When you have guessed everything correctly (or want to give up), you can copy your guesses as a grid of emoji
@@ -101,6 +102,9 @@ export const Information = () => {
           on my blog
         </a>
         .
+      </p>
+      <p className="mb-2">
+        Yes, I read all these books this (Bingo) year, and this is a valid /r/fantasy Bingo card that I will submit!
       </p>
     </Modal>
   );
