@@ -82,9 +82,11 @@ const BottomToolbar = forwardRef(() => {
         aria-label="Deselect all"
         disabled={currentGuess.length === 0 || gameOver}
         className={clsx(
-          "text-white disabled:bg-gray-300 transition",
+          "dark:text-white  transition",
+          "disabled:text-gray-500 disabled:bg-gray-200",
           "dark:disabled:bg-gray-800 dark:disabled:text-gray-400",
-          "cursor-pointer disabled:cursor-not-allowed"
+          "cursor-pointer disabled:cursor-not-allowed",
+          "dark:hover:bg-gray-800"
         )}
       >
         Deselect all
@@ -94,7 +96,8 @@ const BottomToolbar = forwardRef(() => {
         aria-label="Submit guess"
         disabled={currentGuess.length !== CATEGORY_SIZE || gameOver}
         className={clsx(
-          "bg-green-800 text-white disabled:bg-gray-300 transition hover:bg-green-600",
+          "bg-green-800 text-white  transition hover:bg-green-600",
+          "disabled:text-gray-500 disabled:bg-gray-200",
           "dark:disabled:bg-gray-800 dark:disabled:text-gray-400",
           "cursor-pointer disabled:cursor-not-allowed"
         )}
