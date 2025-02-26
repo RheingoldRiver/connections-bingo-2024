@@ -6,9 +6,11 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import clsx from "clsx";
 import { CATEGORY_SIZE, DisplayType, MAX_LIVES } from "../GameStateProvider/constants";
+import { CheckIcon } from "@heroicons/react/24/outline";
 
 const BottomToolbar = forwardRef(() => {
   const {
+    displayType,
     setDisplayType,
     doGuess,
     doClearGuess,
@@ -46,8 +48,7 @@ const BottomToolbar = forwardRef(() => {
               "DropdownMenuContent",
               "text-black dark:text-gray-50",
               "bg-gray-100 dark:bg-gray-900 dark:text-gray-50",
-              "rounded py-2",
-              "text-right"
+              "rounded py-2"
             )}
             align="start"
           >
@@ -56,21 +57,21 @@ const BottomToolbar = forwardRef(() => {
                 setDisplayType(DisplayType.Image);
               }}
             >
-              Image only
+              Image only{displayType === DisplayType.Image && <CheckIcon className="h-4 w-4 inline ml-1" />}
             </DropdownItem>
             <DropdownItem
               onClick={() => {
                 setDisplayType(DisplayType.Text);
               }}
             >
-              Text only
+              Text only{displayType === DisplayType.Text && <CheckIcon className="h-4 w-4 inline ml-1" />}
             </DropdownItem>
             <DropdownItem
               onClick={() => {
                 setDisplayType(DisplayType.Overlay);
               }}
             >
-              Text overlay
+              Text overlay{displayType === DisplayType.Overlay && <CheckIcon className="h-4 w-4 inline ml-1" />}
             </DropdownItem>
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
@@ -78,15 +79,15 @@ const BottomToolbar = forwardRef(() => {
 
       <ToolbarButton
         onClick={doClearGuess}
-        aria-label="Clear guess"
+        aria-label="Deselect all"
         disabled={currentGuess.length === 0 || gameOver}
         className={clsx(
-          "bg-red-700 text-white disabled:bg-gray-300 transition hover:bg-red-500",
+          "text-white disabled:bg-gray-300 transition",
           "dark:disabled:bg-gray-800 dark:disabled:text-gray-400",
           "cursor-pointer disabled:cursor-not-allowed"
         )}
       >
-        Clear guess
+        Deselect all
       </ToolbarButton>
       <ToolbarButton
         onClick={doGuess}
