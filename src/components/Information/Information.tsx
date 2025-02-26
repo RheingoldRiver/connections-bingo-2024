@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Modal } from "../Modal/Modal";
 
 export const Information = () => {
-  const [infoOpen, setInfoOpen] = useState<boolean>(false);
+  const [infoOpen, setInfoOpen] = useState<boolean>(true);
   return (
     <Modal
       open={infoOpen}
