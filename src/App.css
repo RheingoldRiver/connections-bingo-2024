@@ -18,4 +18,6 @@ body {
 
 @custom-variant tall (@media (min-height: 1000px));
 
+@custom-variant xs (@media (min-width: 22rem));
+
 @custom-variant dark (&:where(.dark, .dark *));

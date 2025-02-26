@@ -82,11 +82,12 @@ const BottomToolbar = forwardRef(() => {
         aria-label="Deselect all"
         disabled={currentGuess.length === 0 || gameOver}
         className={clsx(
-          "dark:text-white  transition",
+          "dark:text-white transition",
           "disabled:text-gray-500 disabled:bg-gray-200",
           "dark:disabled:bg-gray-800 dark:disabled:text-gray-400",
           "cursor-pointer disabled:cursor-not-allowed",
-          "dark:hover:bg-gray-800 hover:bg-gray-200"
+          "dark:hover:bg-gray-800 hover:bg-gray-200",
+          "hidden xs:block"
         )}
       >
         Deselect all
