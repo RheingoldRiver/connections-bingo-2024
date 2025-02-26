@@ -149,7 +149,7 @@ export default function BookSquare({
       <a
         className="absolute top-1 right-1 md:top-2 md:right-2"
         href={book.url}
-        target="blank"
+        target="_blank"
         onClick={(e) => {
           e.stopPropagation();
         }}
