@@ -4,10 +4,8 @@ body {
     @apply bg-gray-100 text-black transition-colors;
 }
 
-@media (prefers-color-scheme: dark){
-    body {
-        @apply bg-gray-950 text-white;
-    }
+.dark body {
+    @apply bg-gray-950 text-white;
 }
 
 @utility game-grid-cols {
@@ -19,3 +17,5 @@ body {
 }
 
 @custom-variant tall (@media (min-height: 1000px));
+
+@custom-variant dark (&:where(.dark, .dark *));
