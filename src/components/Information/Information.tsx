@@ -4,7 +4,11 @@ import { useState } from "react";
 import { Modal } from "../Modal/Modal";
 
 export const Information = () => {
-  const [infoOpen, setInfoOpen] = useState<boolean>(true);
+  const [infoOpen, setInfoOpen] = useState<boolean>(() => {
+    if (window.localStorage.getItem("showedInfo")) return false;
+    window.localStorage.setItem("showedInfo", "true");
+    return true;
+  });
   return (
     <Modal
       open={infoOpen}
