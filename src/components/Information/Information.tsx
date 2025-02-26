@@ -40,7 +40,10 @@ export const Information = () => {
       </ol>
       <p className="font-bold">Rules for categories:</p>
       <ol className="mb-2 list-disc list-inside ml-4">
-        <li>Each category should be possible to figure out based on the Goodreads pages for the books.</li>
+        <li>
+          Each category should be possible to figure out based on the Goodreads pages for the books (which are linked
+          from each of the squares).
+        </li>
         <li>
           No category has been a Bingo square in the past, and also I picked categories that are probably too specific
           to ever be Bingo squares in the future.
