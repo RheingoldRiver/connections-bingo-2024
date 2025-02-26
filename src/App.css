@@ -17,3 +17,5 @@ body {
 @utility grid-grid-content {
     grid-column:2;
 }
+
+@custom-variant tall (@media (min-height: 1000px));
