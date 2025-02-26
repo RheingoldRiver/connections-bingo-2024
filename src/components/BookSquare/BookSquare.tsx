@@ -3,9 +3,10 @@ import { useDrag, useDrop } from "react-dnd";
 import { useEffect, useRef, useContext, useCallback } from "react";
 import { Book, COLORS, DisplayType } from "../GameStateProvider/constants";
 import { GameStateContext } from "../GameStateProvider/GameStateProvider";
-import { Bars4Icon } from "@heroicons/react/24/outline";
 import TitleAndAuthor from "./TitleAndAuthor";
 import Overlay from "./Overlay";
+import TextOnlyHeader from "./TextOnlyHeader";
+import DragHandle from "./DragHandle";
 import ExternalLink from "./ExternalLink";
 
 export default function BookSquare({
@@ -89,26 +90,7 @@ export default function BookSquare({
       onClick={() => doClick(book)}
       disabled={book.eliminated || gameOver}
     >
-      <div className={clsx("top-1 md:top-2 flex justify-between w-full")}>
-        <div
-          ref={dragRefCallback}
-          className={clsx("active:cursor-grabbing", gameOver || book.eliminated ? "cursor-not-allowed" : "cursor-grab")}
-        >
-          <Bars4Icon
-            className={clsx(
-              "h-4 w-4 md:h-5 md:w-5 text-gray-800",
-              book.eliminated && COLORS[book.category.difficulty]?.text
-                ? COLORS[book.category.difficulty].text
-                : "dark:text-gray-100"
-            )}
-          />
-        </div>
-        {displayType == DisplayType.Text && (
-          <div className={clsx("text-xs lg:text-sm hidden md:block")}>{book.squareName}</div>
-        )}
-        <ExternalLink book={book} />
-      </div>
-
+      {displayType === DisplayType.Text && <TextOnlyHeader book={book} gameOver={gameOver} ref={dragRefCallback} />}
       <div
         className="relative w-full flex justify-center flex-col grow bg-cover bg-center bg-no-repeat"
         style={{
@@ -120,6 +102,17 @@ export default function BookSquare({
           <TitleAndAuthor book={book} displayType={displayType} />
         )}
       </div>
+      {displayType !== DisplayType.Text && (
+        <>
+          <DragHandle
+            book={book}
+            gameOver={gameOver}
+            ref={dragRefCallback}
+            className="absolute top-1 left-1 md:top-2 md:left-2"
+          />
+          <ExternalLink book={book} className="absolute top-1 right-1 md:top-2 md:right-2" />
+        </>
+      )}
     </button>
   );
 }
