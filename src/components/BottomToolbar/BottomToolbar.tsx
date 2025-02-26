@@ -104,7 +104,10 @@ const BottomToolbar = forwardRef(() => {
       >
         Submit guess
       </ToolbarButton>
-      <ToolbarText>Lives: {MAX_LIVES - (guessHistory.length - correct.length)}</ToolbarText>
+      <ToolbarText>
+        Lives: {MAX_LIVES - (guessHistory.length - correct.length)}
+        {gameOver && " - Game Over!"}
+      </ToolbarText>
       <ToolbarButton
         onClick={() => {
           if (gameOver) {
