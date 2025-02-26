@@ -19,6 +19,9 @@ interface GameState {
   displayType: DisplayType;
   setDisplayType: Dispatch<SetStateAction<DisplayType>>;
   correct: Category[];
+
+  darkMode: boolean;
+  updateDarkMode: (newIsDark: boolean) => void;
 }
 
 const DEFAULT_GAME_STATE: GameState = {
@@ -36,6 +39,8 @@ const DEFAULT_GAME_STATE: GameState = {
   displayType: DisplayType.Overlay,
   setDisplayType: () => {},
   correct: [],
+  darkMode: false,
+  updateDarkMode: () => {},
 };
 
 export const GameStateContext = createContext(DEFAULT_GAME_STATE);
@@ -47,6 +52,14 @@ export default function GameStateProvider({ children }: { children: ReactNode })
   const [scoreOpen, setScoreOpen] = useState<boolean>(false);
   const [displayType, setDisplayType] = useState<DisplayType>(DisplayType.Overlay);
   const [correct, setCorrect] = useState<Category[]>([]);
+
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    const storedTheme = window.localStorage.getItem("theme");
+    if (storedTheme !== undefined) {
+      return storedTheme === "dark";
+    }
+    return !!window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
 
   const doAdd = (book: Book) => {
     if (currentGuess.length >= CATEGORY_SIZE) return;
@@ -110,6 +123,16 @@ export default function GameStateProvider({ children }: { children: ReactNode })
     setScoreOpen(true);
   };
 
+  function updateDarkMode(newIsDark: boolean) {
+    if (newIsDark === true) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    setDarkMode(newIsDark);
+    window.localStorage.setItem("theme", newIsDark ? "dark" : "light");
+  }
+
   return (
     <GameStateContext.Provider
       value={{
@@ -127,6 +150,8 @@ export default function GameStateProvider({ children }: { children: ReactNode })
         displayType,
         setDisplayType,
         correct,
+        darkMode,
+        updateDarkMode,
       }}
     >
       {children}
