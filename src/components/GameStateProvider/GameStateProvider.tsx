@@ -22,6 +22,8 @@ interface GameState {
 
   darkMode: boolean;
   updateDarkMode: (newIsDark: boolean) => void;
+
+  oneAway: boolean;
 }
 
 const DEFAULT_GAME_STATE: GameState = {
@@ -41,6 +43,8 @@ const DEFAULT_GAME_STATE: GameState = {
   correct: [],
   darkMode: false,
   updateDarkMode: () => {},
+
+  oneAway: false,
 };
 
 export const GameStateContext = createContext(DEFAULT_GAME_STATE);
@@ -52,6 +56,7 @@ export default function GameStateProvider({ children }: { children: ReactNode })
   const [scoreOpen, setScoreOpen] = useState<boolean>(false);
   const [displayType, setDisplayType] = useState<DisplayType>(DisplayType.Overlay);
   const [correct, setCorrect] = useState<Category[]>([]);
+  const [oneAway, setOneAway] = useState<boolean>(false);
 
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const storedTheme = window.localStorage.getItem("theme");
@@ -84,8 +89,20 @@ export default function GameStateProvider({ children }: { children: ReactNode })
     setGuessHistory([...guessHistory, currentGuess.map((guess) => guess.category)]);
 
     // we don't want to clear if it's wrong
-
-    if (!res) return;
+    if (!res) {
+      // not correct
+      if (
+        // one-off handling
+        currentGuess.filter((book) => book.category === currentGuess[0].category).length === CATEGORY_SIZE - 1 ||
+        currentGuess.filter((book) => book.category === currentGuess[1].category).length === CATEGORY_SIZE - 1
+      ) {
+        setOneAway(true);
+      } else {
+        setOneAway(false);
+      }
+      return;
+    }
+    setOneAway(false);
     setBoard(
       produce(board, (draft) => {
         currentGuess.forEach((b) => {
@@ -152,6 +169,7 @@ export default function GameStateProvider({ children }: { children: ReactNode })
         correct,
         darkMode,
         updateDarkMode,
+        oneAway,
       }}
     >
       {children}
