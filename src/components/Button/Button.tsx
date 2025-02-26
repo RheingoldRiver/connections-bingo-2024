@@ -26,7 +26,7 @@ export const ToolbarText = ({ children, ...props }: { children: ReactNode } & HT
     <div
       {...props} // ✅ Only applies valid div attributes
       className={clsx(
-        "cursor-pointer p0 px-1 md:px-2 rounded mb-2",
+        "p0 px-1 md:px-2 rounded mb-2",
         "text-xs md:text-lg",
         "border border-transparent",
         props.className
