@@ -55,9 +55,11 @@ export default function GameStateProvider({ children }: { children: ReactNode })
 
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const storedTheme = window.localStorage.getItem("theme");
-    if (storedTheme !== undefined) {
+    console.log(storedTheme);
+    if (storedTheme) {
       return storedTheme === "dark";
     }
+    console.log(window.matchMedia("(prefers-color-scheme: dark)"));
     return !!window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
